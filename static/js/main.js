@@ -16,18 +16,18 @@ loginBtn.addEventListener('click', (e) => {
         loginAlertsDiv.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Hurrey!!</strong> Login Successfully
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
         </button>
-      </div>`
+    </div>`
     }
     else {
         console.error("You CAN'T login..., Incurrect User Name and Incurrect Password")
         loginAlertsDiv.innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Oops!!</strong> Incurrect User Name or Incurrect Password
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
         </button>
-      </div>`
+    </div>`
     }
 })
 
@@ -38,24 +38,7 @@ let userCreateAccountPassword = document.getElementById('userCreateAccountPasswo
 let saveUserDetailsCheck = document.getElementById('saveDetailCheck')
 let userCreateAccountBtn = document.getElementById('userCreateAccountBtn');
 userCreateAccountBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    let arrOfUsers = [];
-    let userDetailsObj = {};
-    if(gettingUserDetailsObj){
-        userDetailsObj.userName = userName.value
-        userDetailsObj.userEmail = userCreateAccountEmail.value
-        userDetailsObj.userPassword = userCreateAccountPassword.value;
-        arrOfUsers.push(userDetailsObj);
-        localStorage.setItem('userDetails', JSON.stringify(arrOfUsers))
-        console.log(`data inserted successfully`, localStorage.getItem('userDetails'))
-    }else{
-        localStorage.setItem('userDetails', JSON.stringify(arrOfUsers))
-        userDetailsObj.userName = userName.value
-        userDetailsObj.userEmail = userCreateAccountEmail.value
-        userDetailsObj.userPassword = userCreateAccountPassword.value;
-        arrOfUsers.push(userDetailsObj);
-        console.log(`data inserted successfully`)
-    }
+    console.log('Account Created...')
 })
 
 const emailVerification = (emailInText) => {
