@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body">
                 <div Id="loginAlerts"></div>
-                <form id="loginForm" action="/">
+                <form id="loginForm" action="/logindone" method="post">
                     <div class="form-group">
                         <label for="userLoginEmail">Email or User Name</label>
                         <input type="text" class="form-control" id="userLoginEmail" aria-describedby="emailHelp">
@@ -52,24 +52,24 @@
             </div>
             <div class="modal-body">
 
-                <form id="loginForm">
+                <form id="loginForm" action="accountcreatedone" method="post">
                     <div class="form-group">
                         <label for="userName">Name</label>
-                        <input type="text" class="form-control" id="userName">
+                        <input type="text" name="userName" class="form-control" id="userName">
                     </div>
                     <div class="form-group">
                         <label for="userCreateAccountEmail">Email address</label>
-                        <input type="email" class="form-control" id="userCreateAccountEmail"
+                        <input type="email" name="userEmail" class="form-control" id="userCreateAccountEmail"
                             aria-describedby="emailHelp">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
                     </div>
                     <div class="form-group">
                         <label for="userCreateAccountPassword">Password</label>
-                        <input type="password" class="form-control" id="userCreateAccountPassword">
+                        <input type="password" name="userPassword" class="form-control" id="userCreateAccountPassword">
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="saveDetailCheck">
+                        <input type="checkbox" name="userSaveDataCheck" class="form-check-input" id="saveDetailCheck">
                         <label class="form-check-label" for="saveDetailCheck">Save My Details For Another Time</label>
                     </div>
                     <button type="submit" class="btn btn-primary" id='userCreateAccountBtn'>Create Account</button>
@@ -83,9 +83,5 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="something">
-    <%- something %>
 </div>
 

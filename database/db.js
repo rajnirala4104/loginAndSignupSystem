@@ -1,18 +1,20 @@
 const { MongoClient } = require('mongodb')
 
 const uri = "mongodb+srv://rajmongo:rajmongo@cluster0.2yskbyq.mongodb.net/?retryWrites=true&w=majority";
-const myClient =  new MongoClient(uri)
-async function main(){
-    try{
+var myClient =  new MongoClient(uri)
+async function main() {
+    try {
         await myClient.connect()
-        console.log(`database connect successfully`)
-    }catch(e){
-        console.log("Oops!! I'm facing porblem to connect the database", e)
-    }
-    // finally{
-    //     await myClient.close()
+        console.log("database connected successfully")
+    } catch (e) {
+        console.log("Oops!!! something went wrong... try again to connect the database");
+        console.error(e)
+    } 
+    // finally {
+    //     await client.close()
     // }
 }
+
 
 
 async function showingAllTheDatabases(client) {
@@ -32,13 +34,23 @@ async function readDataFromDatabase(Client) {
     }
 }
 
+async function insertDataInDatabase(client, data){
+    const insertQuery = await client.db('logingAndRegisterSystem').collection('userDetails').insertOne(data);
+    if(insertQuery){
+        console.log(`${insertQuery}: inserted successfully...`);
+    }else{
+        console.log(`Oops!! i'm facing problem to insert the data, check your code or try again...`)
+    }
+}
+
 // main()
 
 
 const exportContent = {
     readDataFromDatabase,
     main,
-    myClient
+    myClient,
+    insertDataInDatabase
 }
 
 
