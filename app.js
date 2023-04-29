@@ -13,15 +13,15 @@ app.use(express.static(__dirname + '/static'));
 
 
 app.get('/', (request, response) => {
-    const data = readDataFromDatabase(myClient).then(result => result, err=>err)
-    response.status(200).render('layout', {myData: data})
+    readDataFromDatabase(myClient).then(result => console.log(result), err=>err)
+    response.status(200).render('index', {MyName: {age:39, hobbei: ["Guitar", "singing", "football","listing music", "traveling"]}})
 })
 
 
 app.post('/accountcreatedone', (request, response)=>{
     console.log(request.body)
     insertDataInDatabase(myClient, request.body).then(result => result, err => err)
-    response.status(200).render('createAccount', {userData: request.body})
+    response.status(200).render('createAccount.hbs')
 })
 
 
