@@ -15,5 +15,6 @@ div.container{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 40%;
+    flex-wrap: wrap;
 }

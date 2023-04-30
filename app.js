@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
-const { main, readDataFromDatabase, myClient, insertDataInDatabase, deleteTheDataOfTheDatabase, updateDataOfDatabase } = require('./database/db')
+const { main, readDataFromDatabase, myClient, insertDataInDatabase, deleteTheDataOfTheDatabase, updateDataOfDatabase, deleteTheMultipalDataOfTheDatabase } = require('./database/db')
 
 main()
 const app = express()
@@ -21,11 +21,8 @@ app.get('/', (request, response) => {
 
 app.post('/accountcreatedone', (request, response) => {
     const data = request.body
-    console.log(data)
-
+    var _datafound = false;
     readDataFromDatabase(myClient).then(databaseData => {
-        let _datafound = false;
-
         databaseData.forEach(singleData => {
             if (data.userName === singleData.userName && data.userEmail === singleData.userEmail) {
                 _datafound = true;
@@ -38,7 +35,7 @@ app.post('/accountcreatedone', (request, response) => {
                 DublicateData_NOT_FoundError: true,
                 message : "Data Inserted Successfully",
                 UserDetails: {
-                    userName: data.userName,
+                    userName: data.userName,    
                     userEmail: data.userEmail
                 }
             })
