@@ -54,12 +54,22 @@
         </div>
     </nav>
     <div class="container">
-        <h1>Account create successfully</h1>
-        <div class="data">
-            {{!-- {{#each userData}}
-            <h3>{{this}}</h3>
-            {{/each}} --}}
+        {{#if DublicateData_NOT_FoundError}}
+        <div class="myPersonalAlert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>DublicateDataFound</strong> {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
+        {{/if}}
+        {{#if DublicateData_NOT_FoundError}}
+        <div class="showingUserData">
+                <h3>Name: {{UserDetails.userName}}</h3>
+                <h3>Email: {{UserDetails.userEmail}}</h3>
+        </div>
+        {{/if}}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
-const { main, readDataFromDatabase, myClient, insertDataInDatabase} = require('./database/db')
+const { main, readDataFromDatabase, myClient, insertDataInDatabase, deleteTheDataOfTheDatabase, updateDataOfDatabase } = require('./database/db')
 
 main()
 const app = express()
@@ -13,18 +13,45 @@ app.use(express.static(__dirname + '/static'));
 
 
 app.get('/', (request, response) => {
-    readDataFromDatabase(myClient).then(result => console.log(result), err=>err)
-    response.status(200).render('index', {MyName: {age:39, hobbei: ["Guitar", "singing", "football","listing music", "traveling"]}})
-})
-
-
-app.post('/accountcreatedone', (request, response)=>{
-    console.log(request.body)
-    insertDataInDatabase(myClient, request.body).then(result => result, err => err)
-    response.status(200).render('createAccount.hbs')
+    readDataFromDatabase(myClient).then(result => console.log(result), err => err)
+    response.status(200).render('index')
 })
 
 
 
+app.post('/accountcreatedone', (request, response) => {
+    const data = request.body
+    console.log(data)
 
-module.exports = app
+    readDataFromDatabase(myClient).then(databaseData => {
+        let _datafound = false;
+
+        databaseData.forEach(singleData => {
+            if (data.userName === singleData.userName && data.userEmail === singleData.userEmail) {
+                _datafound = true;
+            }
+        })
+
+        if (_datafound === false) {
+            insertDataInDatabase(myClient, data).then(result => result, err => err)
+            response.status(200).render('createAccount.hbs', {
+                DublicateData_NOT_FoundError: true,
+                message : "Data Inserted Successfully",
+                UserDetails: {
+                    userName: data.userName,
+                    userEmail: data.userEmail
+                }
+            })
+        }else{
+            response.status(200).render('index', { 
+                DublicateDataFoundError: _datafound,
+                message : "This data is already we have"
+            })
+        }
+    })
+})
+
+
+
+
+module.exports = app;

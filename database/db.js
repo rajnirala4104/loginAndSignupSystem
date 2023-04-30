@@ -1,3 +1,4 @@
+const expressEjsLayouts = require('express-ejs-layouts');
 const { MongoClient } = require('mongodb')
 
 const uri = "mongodb+srv://rajmongo:rajmongo@cluster0.2yskbyq.mongodb.net/?retryWrites=true&w=majority";
@@ -43,14 +44,31 @@ async function insertDataInDatabase(client, data){
     }
 }
 
+async function deleteTheDataOfTheDatabase(client, data){
+    const result = await client.db('logingAndRegisterSystem').collection('userDetails').deleteOne(data)
+    console.log(`${result.deletedCount} document(s) has deleted`);
+}
+async function deleteTheMultipalDataOfTheDatabase(client, data){
+    const result = await client.db('logingAndRegisterSystem').collection('userDetails').deleteMany(data)
+    console.log(`${result.deletedCount} document(s) has deleted`);
+}
+
+async function updateDataOfDatabase(client, whatDataYouWantToUpdate, updatedData){
+    await await client.db('logingAndRegisterSystem').collection('userDetails').updateOne(whatDataYouWantToUpdate, {$set: updatedData});
+    console.log("data updated successfully");
+}
+
 // main()
 
 
 const exportContent = {
-    readDataFromDatabase,
     main,
     myClient,
-    insertDataInDatabase
+    readDataFromDatabase,
+    insertDataInDatabase,
+    deleteTheDataOfTheDatabase, 
+    deleteTheMultipalDataOfTheDatabase,
+    updateDataOfDatabase
 }
 
 
