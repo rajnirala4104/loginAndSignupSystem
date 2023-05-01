@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/loginStyle.css">
+    <script src="https://kit.fontawesome.com/24e026726f.js" crossorigin="anonymous"></script>
     <title>Hello, world!</title>
 </head>
 
@@ -53,23 +55,38 @@
             </form>
         </div>
     </nav>
-    <div class="container">
-            {{#if DublicateData_NOT_FoundError}}
-            <div class="myPersonalAlert">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>WOW!!..</strong> {{message}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+    <div class="loginContainer">
+
+        {{#if DublicateData_NOT_FoundError}}
+        <div class="myPersonalAlert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>WOW!!..</strong> {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            {{/if}}
-            {{#if DublicateData_NOT_FoundError}}
-            <div class="showingUserData">
-                <h3>Name: {{UserDetails.userName}}</h3>
-                <h3>Email: {{UserDetails.userEmail}}</h3>
+        </div>
+        {{/if}}
+
+        <div class="userDetails">
+            <div class="userProfileImage">
+                <i class="fa-solid fa-user"></i>
             </div>
+            {{#if checkLoginInfo}}
+            {{#each userInformation}}
+            <span>
+                {{userName}}
+            </span>
+            {{/each}}
             {{/if}}
+            <div class="patanhikyahaiye my-5">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae accusamus rem suscipit officia
+                veniam ipsa. Iusto libero quas eaque perferendis ad odio rerum deserunt placeat laboriosam, id harum
+                dicta voluptatibus voluptas aperiam et sed, consequuntur quod quae temporibus soluta, omnis in ipsum
+                pariatur provident. Laudantium soluta magni sit molestias nihil.
+            </div>
+        </div>
+        
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

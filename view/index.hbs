@@ -55,14 +55,16 @@
     </nav>
     <div class="container">
         {{#if checkLoginInfo}}
-        {{#with userLoginInfo}}
+        {{#with userInformation}}
         <div class="myAlert">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
 
 
                 {{!-- {{loginUserPassword}} --}}
 
-                <strong>Oops!!</strong> {{loginUserName}}, {{loginUserEmail}}:
+                <strong>ERROR</strong> <u>
+                    {{loginUserName}}, {{loginUserPassword}}:
+                </u>
                 {{/with}}
                 {{message}}
                 You Should do registration

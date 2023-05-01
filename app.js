@@ -48,26 +48,28 @@ app.post('/logindone', (req, res) => {
     const userLoginInfo = req.body
     console.log(userLoginInfo)
     var _checkLoginInfo = false;
+    var userDbData = [];
     readDataFromDatabase(myClient).then(userData => {
         userData.forEach(dbData => {
             // console.log(`-- ${dbData.userName}\n-- ${dbData.userEmail}`
             // console.log(`== ${userLoginInfo.loginUserName}\n== ${userLoginInfo.loginUserPassword}`)
             if (((dbData.userName === userLoginInfo.loginUserName) || (dbData.userEmail === userLoginInfo.loginUserName)) && (dbData.userPassword === userLoginInfo.loginUserPassword))  {
                 _checkLoginInfo = true;
+                userDbData.push(dbData) 
             }
         })
         if (_checkLoginInfo === true) {
             console.log("You CAN login...")
             res.status(200).render('loginDone', { 
                 checkLoginInfo: _checkLoginInfo,
-                userLoginInfo: userLoginInfo
+                userInformation: userDbData
             });
         } else{
             console.log("You CAN'T login..")
             res.status(200).render('index', { 
                 checkLoginInfo: true,
-                message: "Those details already we have",
-                userLoginInfo: userLoginInfo
+                message: "We don't have those information in our database",
+                userInformation: userLoginInfo
             });
         }
     })

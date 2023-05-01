@@ -61,30 +61,16 @@
                 <i class="fa-solid fa-user"></i>
             </div>
             {{#if checkLoginInfo}}
-            {{#with userLoginInfo}}
+            {{#each userInformation}}
             <span>
-                {{loginUserName}}
+                {{userName}}
             </span>
-            {{!-- {{loginUserPassword}} --}}
-            {{/with}}
+            {{/each}}
             {{/if}}
             <div class="patanhikyahaiye my-5">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae accusamus rem suscipit officia veniam ipsa. Iusto libero quas eaque perferendis ad odio rerum deserunt placeat laboriosam, id harum dicta voluptatibus voluptas aperiam et sed, consequuntur quod quae temporibus soluta, omnis in ipsum pariatur provident. Laudantium soluta magni sit molestias nihil.
             </div>
         </div>
-
-
-
-
-
-
-
-        {{!-- {{#if checkLoginInfo}}
-        {{#with userLoginInfo}}
-        {{loginUserName}}
-        {{loginUserPassword}}
-        {{/with}}
-        {{/if}} --}}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
