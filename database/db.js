@@ -8,15 +8,13 @@ async function main() {
         await myClient.connect()
         console.log("database connected successfully")
     } catch (e) {
-        console.log("Oops!!! something went wrong... try again to connect the database");
+        console.log("Oops!!! i'm facing problem to connect the database, check your code and try again..");
         console.error(e)
     } 
     // finally {
-    //     await client.close()
+    //     await myClient.close()
     // }
 }
-
-
 
 async function showingAllTheDatabases(client) {
     const dbs = await client.db().admin().listDatabases();

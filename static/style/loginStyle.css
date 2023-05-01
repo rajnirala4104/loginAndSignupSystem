@@ -1,0 +1,44 @@
+.loginContainer{
+    /* border: 2px solid blue; */
+    width: 80%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.userDetails{
+    /* border: 2px solid red; */
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userProfileImage{
+    border: 2px solid rgb(104, 104, 104);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height:30%;
+    border-radius:50%;   
+    background: rgb(65, 65, 65);
+}
+.userProfileImage i{
+    color: grey;
+    font-size: 3.5rem;
+}
+
+.patanhikyahaiye{
+    text-align: center;
+    width: 70%;
+}
+
+.userDetails span{
+    /* border: 1px solid yellow; */
+    font-size: 2rem;
+}

@@ -18,3 +18,10 @@ div.container{
     width: 40%;
     flex-wrap: wrap;
 }
+#SuggestBtn{
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    background: transparent;
+}
+
