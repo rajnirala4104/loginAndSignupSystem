@@ -28,7 +28,7 @@ app.post('/accountcreatedone', (request, response) => {
         if (_datafound === false) {
             insertDataInDatabase(myClient, data).then(result => result, err => err)
             response.status(200).render('createAccount.hbs', {
-                DublicateData_NOT_FoundError: true,
+                DublicateData_NOT_FoundError: _datafound,
                 message: "Data Inserted Successfully",
                 UserDetails: {
                     userName: data.userName,

@@ -24,9 +24,9 @@
     justify-content: center;
     align-items: center;
     width: 10%;
-    height:30%;
-    border-radius:50%;   
-    background: rgb(65, 65, 65);
+    height: 30%;
+    border-radius: 50%;
+    background: rgb(52 58 64);
 }
 .userProfileImage i{
     color: grey;
