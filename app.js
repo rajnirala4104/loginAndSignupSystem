@@ -18,6 +18,7 @@ app.get('/', (request, response) => {
 app.post('/accountcreatedone', (request, response) => {
     const data = request.body
     var _datafound = false;
+    
     readDataFromDatabase(myClient).then(databaseData => {
         databaseData.forEach(singleData => {
             if (data.userName === singleData.userName && data.userEmail === singleData.userEmail) {
@@ -27,13 +28,9 @@ app.post('/accountcreatedone', (request, response) => {
 
         if (_datafound === false) {
             insertDataInDatabase(myClient, data).then(result => result, err => err)
-            response.status(200).render('createAccount.hbs', {
-                DublicateData_NOT_FoundError: _datafound,
-                message: "Data Inserted Successfully",
-                UserDetails: {
-                    userName: data.userName,
-                    userEmail: data.userEmail
-                }
+            response.status(200).render('createAccount', {
+                DublicateData_NOT_FoundError: true,
+                message:"Account created successfuly, now you can login"
             })
         } else {
             response.status(200).render('index', {
@@ -59,13 +56,13 @@ app.post('/logindone', (req, res) => {
             }
         })
         if (_checkLoginInfo === true) {
-            console.log("You CAN login...")
+            // console.log("You CAN login...")
             res.status(200).render('loginDone', { 
                 checkLoginInfo: _checkLoginInfo,
                 userInformation: userDbData
             });
         } else{
-            console.log("You CAN'T login..")
+            // console.log("You CAN'T login..")
             res.status(200).render('index', { 
                 checkLoginInfo: true,
                 message: "We don't have those information in our database",

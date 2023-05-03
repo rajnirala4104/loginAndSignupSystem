@@ -59,33 +59,14 @@
     <div class="myPersonalAlert">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>WOW!!..</strong> {{message}}
+            <button type="button" data-toggle="modal" data-target="#loginModal" data-dismiss="modal"
+                            id="SuggestBtn">Login</button>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     </div>
     {{/if}}
-    <div class="loginContainer">
-
-        <div class="userDetails">
-            <div class="userProfileImage">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            {{#if checkLoginInfo}}
-            {{#each userInformation}}
-            <span>
-                {{userName}}
-            </span>
-            {{/each}}
-            {{/if}}
-            <div class="patanhikyahaiye my-5">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae accusamus rem suscipit officia
-                veniam ipsa. Iusto libero quas eaque perferendis ad odio rerum deserunt placeat laboriosam, id harum
-                dicta voluptatibus voluptas aperiam et sed, consequuntur quod quae temporibus soluta, omnis in ipsum
-                pariatur provident. Laudantium soluta magni sit molestias nihil.
-            </div>
-        </div>
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
